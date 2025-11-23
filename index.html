@@ -1,172 +1,40 @@
-<!--
-Index.html - 90 PRA TRÊS — PARTY (VERSÃO REFEITA)
-Use: salve como index.html no root do repositório GitHub Pages.
-Inclui: imagem de capa (caminho local no Canvas), fonte Opium (fallback) e assets opcionais.
-Para GitHub Pages: mova a imagem para assets/cover.jpg e atualize o caminho no HTML (procura por COVER_IMAGE_PATH).
--->
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>90 PRA TRÊS — PARTY</title>
-  <meta name="description" content="Primeira mixtape PARTY — 90 PRA TRÊS" />
-
-  <!-- Tentativa de fonte Opium local (incluir assets/opium.woff2 se tiver). Fallback para Orbitron do Google. -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Mixtape PARTY — 90 PRA TRÊS." />
   <style>
-    @font-face{font-family: 'OpiumLocal'; src: url('assets/opium.woff2') format('woff2'); font-weight: normal; font-style: normal; font-display: swap}
-    :root{--pink:#ff5cd9; --black:#000; --white:#fff; --muted:#cfcfcf; --glass: rgba(255,255,255,0.06);}
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; background:linear-gradient(180deg,#050405 0%, #0b0710 60%); color:var(--white); font-family: 'OpiumLocal', 'Orbitron', system-ui, -apple-system, 'Segoe UI', Roboto, Arial; -webkit-font-smoothing:antialiased}
-
-    /* Layout */
-    .wrap{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px}
-    .panel{width:100%; max-width:1150px; border-radius:20px; padding:28px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); box-shadow:0 40px 90px rgba(0,0,0,0.7)}
-
-    .row{display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap}
-    .left{flex:0 0 270px}
-    .center{flex:1; min-width:320px}
-
-    /* Cover */
-    .cover{width:270px; height:270px; border-radius:16px; overflow:hidden; position:relative; border:1px solid rgba(255,255,255,0.06)}
-    .cover img{width:100%; height:100%; object-fit:cover; display:block}
-    .neon{position:absolute; inset:0; pointer-events:none}
-
-    /* Title */
-    h1{font-size:56px; margin:0; letter-spacing:4px; text-transform:uppercase}
-    .glitch{position:relative}
-    .glitch::before, .glitch::after{content:attr(data-text); position:absolute; left:0; top:0; width:100%;}
-    .glitch::before{color:var(--pink); transform:translate(-2px,-2px); mix-blend-mode:screen; opacity:0.9}
-    .glitch::after{color:var(--white); transform:translate(2px,2px); mix-blend-mode:overlay; opacity:0.6}
-
-    .subtitle{color:var(--muted); margin-top:6px}
-
-    /* Controls */
-    .controls{display:flex; gap:12px; margin-top:18px}
-    .btn{padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02); color:var(--white); font-weight:700; text-transform:uppercase; cursor:pointer}
-    .btn.primary{background:linear-gradient(90deg,var(--pink), rgba(255,92,217,0.18)); color:var(--black)}
-
-    /* Tracklist */
-    .tracks{background:rgba(255,255,255,0.02); padding:16px; border-radius:12px}
-    .tracks h3{margin:0 0 8px 0}
-    .track{padding:10px 12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px}
-
-    /* Meta */
-    .meta{width:320px; min-width:240px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); padding:16px; border-radius:12px}
-    .meta h4{margin:0 0 6px 0}
-
-    footer{margin-top:18px; color:rgba(255,255,255,0.45); font-size:13px}
-
-    /* Responsive */
-    @media (max-width:880px){h1{font-size:40px} .left{flex-basis:200px} .cover{width:200px;height:200px}}
-
-    /* subtle animated background blobs */
-    .bg-blob{position:absolute; border-radius:999px; filter:blur(60px); opacity:0.12}
-    .b1{width:420px;height:420px; background:linear-gradient(180deg,var(--pink), rgba(255,92,217,0.08)); left:-80px; top:-120px}
-    .b2{width:300px;height:300px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,92,217,0.2)); right:-60px; bottom:-80px}
+    body{margin:0;background:#0a0a0a;color:white;font-family:Inter,Arial;padding:20px;text-align:center}
+    h1{font-size:48px;margin-top:40px}
+    .cover{width:260px;height:260px;margin:30px auto;border-radius:20px;overflow:hidden;background:#111;border:1px solid #333}
+    .cover img{width:100%;height:100%;object-fit:cover}
+    .box{background:#111;padding:20px;border-radius:14px;margin:20px auto;max-width:500px;border:1px solid #222}
+    .btn{padding:12px 20px;border-radius:10px;background:#ff4ad6;color:#000;border:none;font-weight:700;cursor:pointer;margin-top:12px}
   </style>
 </head>
 <body>
-  <div class="bg-blob b1"></div>
-  <div class="bg-blob b2"></div>
+  <h1>PARTY — 90 PRA TRÊS</h1>
 
-  <div class="wrap">
-    <div class="panel">
-      <div class="row">
-        <div class="left">
-          <div class="cover" id="coverWrap">
-            <!-- COVER_IMAGE_PATH: currently points to the Canvas upload. For GitHub move image to assets/cover.jpg and replace src accordingly. -->
-            <img id="cover" src="/mnt/data/7e3d7c3e-e0ea-4b3e-9b8c-7fe49f0c1268.png" alt="Capa PARTY">
-            <svg class="neon" viewBox="0 0 600 600" preserveAspectRatio="none" style="width:100%;height:100%"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ff5cd9" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#g1)"/></svg>
-          </div>
-          <div style="margin-top:12px; display:flex; gap:8px">
-            <button class="btn primary" onclick="playPreview()">Ouvir Preview</button>
-            <button class="btn" onclick="downloadKit()">Press Kit</button>
-          </div>
-        </div>
-
-        <div class="center">
-          <h1 class="glitch" data-text="PARTY">PARTY</h1>
-          <div class="subtitle">Primeira mixtape da <strong>90 PRA TRÊS</strong> — estética Opium, neon &amp; glitch</div>
-
-          <div style="margin-top:18px; display:flex; gap:16px; align-items:center; flex-wrap:wrap">
-            <div style="font-weight:800; color:var(--muted)">LANÇAMENTO</div>
-            <div style="font-weight:900; color:var(--pink); font-size:18px">EM BREVE</div>
-          </div>
-
-          <div style="margin-top:16px;" class="controls">
-            <button class="btn" onclick="openInstagram()">Instagram</button>
-            <button class="btn" onclick="openX()">X</button>
-            <button class="btn" id="presaveBtn" onclick="openPresave()">Pré-save</button>
-          </div>
-
-          <div style="margin-top:26px" class="tracks">
-            <h3>Tracklist</h3>
-            <div style="padding:14px; background:rgba(0,0,0,0.12); border-radius:8px; font-weight:800; text-align:center">EM BREVE</div>
-          </div>
-
-        </div>
-
-        <div class="meta">
-          <h4>Artistas</h4>
-          <p>Zezão • Rafael • Gabzhtz</p>
-
-          <h4 style="margin-top:12px">Produtores & Composição</h4>
-          <p>Makita — produtor & compositor<br>João — produtor</p>
-
-          <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap">
-            <a class="btn" href="https://www.instagram.com/90_pratres_ofc/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
-            <a class="btn" href="#">X</a>
-          </div>
-        </div>
-
-      </div>
-
-      <footer>© 90 PRA TRÊS — PARTY • Todos os direitos reservados.</footer>
-    </div>
+  <div class="cover">
+    <img src="https://raw.githubusercontent.com/USER/REPO/main/cover.png" alt="Capa PARTY" />
   </div>
 
-  <!-- Presave modal (simple) -->
-  <div id="presaveModal" style="display:none; position:fixed; inset:0; align-items:center; justify-content:center; background:rgba(0,0,0,0.6); z-index:80">
-    <div style="width:100%; max-width:520px; background:#071018; padding:20px; border-radius:12px">
-      <h3 style="margin:0 0 8px 0">Pré-save</h3>
-      <p style="margin:0 0 12px 0">Deixe seu e-mail e avisaremos quando a mixtape sair.</p>
-      <div style="display:flex; gap:8px; margin-bottom:12px">
-        <input id="ps_name" placeholder="Seu nome" style="flex:1;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--white)">
-        <input id="ps_email" placeholder="seu@exemplo.com" style="flex:1;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--white)">
-      </div>
-      <div style="display:flex; gap:8px; justify-content:flex-end">
-        <button class="btn" onclick="closePresave()">Cancelar</button>
-        <button class="btn primary" onclick="submitPresave()">Enviar</button>
-      </div>
-    </div>
+  <div class="box">
+    <h2>Tracklist</h2>
+    <p>Em breve…</p>
   </div>
 
-  <audio id="previewAudio" preload="none">
-    <!-- coloque assets/preview.mp3 e descomente para ativar preview -->
-    <!-- <source src="assets/preview.mp3" type="audio/mpeg"> -->
-  </audio>
+  <div class="box">
+    <h2>Artistas</h2>
+    <p>Zezão • Rafael • Gabzhtz</p>
+    <h3>Produção</h3>
+    <p>Makita (prod/compositor) • João (prod)</p>
+  </div>
 
-  <script>
-    // helper links
-    function openInstagram(){ window.open('https://www.instagram.com/90_pratres_ofc/?utm_source=ig_web_button_share_sheet','_blank') }
-    function openX(){ window.open('https://x.com','_blank') }
+  <button class="btn">Pré-save (em breve)</button>
 
-    function downloadKit(){ alert('Press kit disponível em breve.') }
-
-    // preview
-    function playPreview(){ const a=document.getElementById('previewAudio'); if(a.querySelector('source')) a.play(); else alert('Preview ainda não disponível.'); }
-
-    // presave
-    function openPresave(){ document.getElementById('presaveModal').style.display='flex' }
-    function closePresave(){ document.getElementById('presaveModal').style.display='none' }
-    function submitPresave(){ const n=document.getElementById('ps_name').value||'—'; const e=document.getElementById('ps_email').value||''; if(!e||!e.includes('@')){alert('E-mail inválido');return;} const list=JSON.parse(localStorage.getItem('presave_list')||'[]'); list.push({name:n,email:e,date:new Date().toISOString()}); localStorage.setItem('presave_list',JSON.stringify(list)); alert('Obrigado — você será avisado!'); closePresave() }
-
-    // fallback: se imagem não carregar (ex: no GitHub) tenta assets/cover.jpg
-    document.getElementById('cover').addEventListener('error', function(){ this.src='assets/cover.jpg'; });
-  </script>
+  <p style="margin-top:40px;color:#777">© 90 PRA TRÊS — PARTY</p>
 </body>
 </html>
