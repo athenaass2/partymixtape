@@ -6,7 +6,7 @@
   <title>90 PRA TRÊS — PARTY</title>
   <meta name="description" content="Mixtape PARTY — 90 PRA TRÊS. Em breve. Página oficial." />
 
-  <!-- Fonte estilo Opium (alternativa similar) -->
+  <!-- Fonte estilo 'opium-like' (fallback segura) -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -23,16 +23,18 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: 'Orbitron', ui-sans-serif;
-      background: radial-gradient(circle at 10% 10%, rgba(255,92,217,0.06), transparent 5%),
-                 radial-gradient(circle at 90% 90%, rgba(255,255,255,0.02), transparent 10%),
-                 linear-gradient(180deg,#050405 0%, #0b0710 60%);
+      font-family: 'Orbitron', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,92,217,0.06), transparent 5%),
+        radial-gradient(circle at 90% 90%, rgba(255,255,255,0.02), transparent 10%),
+        linear-gradient(180deg,#050405 0%, #0b0710 60%);
       color:var(--white);
       overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
     }
 
-    /* HERO */
-    .hero{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:48px 20px; position:relative;}
+    /* container */
+    .hero{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:48px 20px; position:relative}
     .card{width:100%; max-width:1100px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:22px; padding:36px; box-shadow:0 10px 40px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.03); backdrop-filter:blur(6px)}
 
     .top{display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap}
@@ -42,46 +44,35 @@
 
     .title-wrap{flex:1}
     .title{font-size:48px; margin:0; font-weight:800; letter-spacing:3px; text-transform:uppercase; position:relative}
-
-    /* glitch */
-    .title.glitch::before, .title.glitch::after{
-      content:attr(data-text);
-      position:absolute; inset:0; opacity:0.8;
-      animation:glitch 2.3s infinite linear alternate-reverse;
-    }
+    .title.glitch::before, .title.glitch::after{content:attr(data-text); position:absolute; inset:0; opacity:0.8; animation:glitch 2.3s infinite linear alternate-reverse}
     .title.glitch::before{color:var(--pink); transform:translate(-2px,-2px)}
     .title.glitch::after{color:var(--white); transform:translate(2px,2px)}
-    @keyframes glitch{
-      0%{clip-path:inset(0 0 80% 0)}
-      20%{clip-path:inset(10% 0 60% 0)}
-      40%{clip-path:inset(40% 0 20% 0)}
-      60%{clip-path:inset(80% 0 0 0)}
-      80%{clip-path:inset(30% 0 40% 0)}
-      100%{clip-path:inset(0 0 80% 0)}
-    }
+    @keyframes glitch{0%{clip-path:inset(0 0 80% 0)}20%{clip-path:inset(10% 0 60% 0)}40%{clip-path:inset(40% 0 20% 0)}60%{clip-path:inset(80% 0 0 0)}80%{clip-path:inset(30% 0 40% 0)}100%{clip-path:inset(0 0 80% 0)}}
 
     .slogan{margin-top:4px; color:var(--muted); font-weight:600}
 
-    /* MEDIA */
     .media{display:flex; gap:20px; align-items:center; margin-top:26px; flex-wrap:wrap}
     .cover{width:230px; height:230px; border-radius:16px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.06)}
-    .cover img{width:100%; height:100%; object-fit:cover}
+    .cover img{width:100%; height:100%; object-fit:cover; display:block}
 
     .controls{flex:1; min-width:260px}
     .btn{padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,0.07); cursor:pointer; text-transform:uppercase; font-weight:700; letter-spacing:1px; background:var(--glass); color:var(--white); display:inline-flex; gap:10px}
-    .primary{background:linear-gradient(90deg,var(--pink), rgba(255,92,217,0.18)); color:var(--black)}
-    .ghost{background:transparent}
+    .btn.primary{background:linear-gradient(90deg,var(--pink), rgba(255,92,217,0.18)); color:var(--black)}
+    .btn.ghost{background:transparent}
 
-    /* TRACKLIST */
     .tracklist-section{margin-top:36px; display:flex; gap:20px; flex-wrap:wrap}
     .tracks{flex:1; min-width:320px; background:var(--card); padding:18px; border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
+    .tracks h3{margin:0 0 12px 0}
     .coming{font-size:22px; text-transform:uppercase; color:var(--pink); font-weight:800}
 
-    /* META */
     .meta{width:260px; min-width:220px; background:var(--card); padding:18px; border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
     .meta h4{margin:0 0 6px 0}
-
     footer{margin-top:30px; text-align:center; color:rgba(255,255,255,0.4); font-size:12px}
+
+    @media (max-width:760px){
+      .title{font-size:36px}
+      .cover{width:180px;height:180px}
+    }
   </style>
 </head>
 <body>
@@ -96,16 +87,21 @@
             <div class="slogan">Primeira mixtape — estética Opium & neon</div>
           </div>
         </div>
-        <div style="display:flex; gap:12px">
+
+        <div style="display:flex; gap:12px; align-items:center;">
           <button class="btn ghost" onclick="window.open('https://www.instagram.com/90_pratres_ofc/?utm_source=ig_web_button_share_sheet','_blank')">Instagram</button>
+          <button class="btn ghost" onclick="window.open('https://x.com','_blank')">X</button>
           <button class="btn primary" id="presaveBtn">Pré-save</button>
         </div>
       </div>
 
       <div class="media">
         <div class="cover">
-          <img src="/mnt/data/3a8d90a0-91dd-4c52-812e-23a683565e94.png" alt="Capa PARTY">
+          <!-- LOCAL CANVAS PATH (funciona no Canvas). 
+               Se for subir pro GitHub, mova a imagem para assets/cover.jpg e troque src abaixo para "assets/cover.jpg" -->
+          <img id="coverImg" src="/mnt/data/3a8d90a0-91dd-4c52-812e-23a683565e94.png" alt="Capa PARTY">
         </div>
+
         <div class="controls">
           <button class="btn primary" onclick="playPreview()">▶ Preview</button>
           <button class="btn ghost" onclick="alert('Press Kit em breve')">Press Kit</button>
@@ -138,4 +134,64 @@
         </div>
       </div>
 
-      <footer>© 90 PRA TRÊS
+      <footer>© 90 PRA TRÊS — PARTY • Todos os direitos reservados.</footer>
+    </div>
+  </div>
+
+  <!-- modal pré-save -->
+  <div id="modal" style="display:none; position:fixed; inset:0; align-items:center; justify-content:center; background:rgba(0,0,0,0.6); z-index:60;">
+    <div style="width:100%; max-width:520px; background:linear-gradient(180deg,#071018,#0d0810); border-radius:14px; padding:22px; margin:auto">
+      <h3 style="margin:0 0 8px 0">Pré-save & notificação</h3>
+      <p style="margin:0 0 10px 0">Deixe seu e-mail e te avisamos quando a mixtape for lançada.</p>
+      <div style="display:flex; gap:12px">
+        <input id="ps_name" placeholder="Seu nome" style="flex:1; padding:10px; border-radius:8px; background:transparent; border:1px solid rgba(255,255,255,0.05); color:var(--white)">
+        <input id="ps_email" placeholder="seu@exemplo.com" style="flex:1; padding:10px; border-radius:8px; background:transparent; border:1px solid rgba(255,255,255,0.05); color:var(--white)">
+      </div>
+      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px">
+        <button class="btn ghost" onclick="closeModal()">Cancelar</button>
+        <button class="btn primary" onclick="submitPreSave()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="previewAudio" preload="none">
+    <!-- Para ativar: adicione assets/preview.mp3 e descomente a linha abaixo -->
+    <!-- <source src="assets/preview.mp3" type="audio/mpeg"> -->
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    // Modal controls
+    const modal = document.getElementById('modal');
+    const presaveBtn = document.getElementById('presaveBtn');
+    presaveBtn && presaveBtn.addEventListener('click', openModal);
+    function openModal(){ modal.style.display = 'flex'; }
+    function closeModal(){ modal.style.display = 'none'; }
+
+    function submitPreSave(){
+      const name = document.getElementById('ps_name').value || '—';
+      const email = document.getElementById('ps_email').value || '';
+      if(!email || !email.includes('@')){ alert('Coloque um e-mail válido.'); return; }
+      const list = JSON.parse(localStorage.getItem('presave_list')||'[]');
+      list.push({name, email, date: new Date().toISOString()});
+      localStorage.setItem('presave_list', JSON.stringify(list));
+      alert('Obrigado! Você será avisado quando a mixtape sair.');
+      closeModal();
+    }
+
+    function playPreview(){
+      const audio = document.getElementById('previewAudio');
+      if(audio.querySelector('source')) audio.play();
+      else alert('Preview ainda não disponível — será adicionado em breve.');
+    }
+
+    // Extra: tenta carregar imagem relativa se a local não existir
+    (function tryRelativeCover(){
+      const cover = document.getElementById('coverImg');
+      if(!cover) return;
+      // se a imagem atual der erro de carregamento, troca para assets/cover.jpg
+      cover.onerror = () => { cover.src = 'assets/cover.jpg'; };
+    })();
+  </script>
+</body>
+</html>
