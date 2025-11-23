@@ -1,14 +1,3 @@
-<!--
-Index.html - 90 PRA TRÊS — PARTY
-Pronto para abrir no VS Code / subir no GitHub Pages.
-Instruções rápidas:
-1) Salve este arquivo como `index.html` em um novo repositório.
-2) (Opcional) Adicione `assets/` com imagens/cover.jpg e um preview.mp3.
-3) No GitHub -> Settings -> Pages -> Source: `main` branch `/ (root)` para publicar.
-
-Personalize: troque as URLs de redes sociais, adicione links de pré-save.
--->
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -16,6 +5,9 @@ Personalize: troque as URLs de redes sociais, adicione links de pré-save.
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>90 PRA TRÊS — PARTY</title>
   <meta name="description" content="Mixtape PARTY — 90 PRA TRÊS. Em breve. Página oficial." />
+
+  <!-- Fonte estilo Opium (alternativa similar) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -28,149 +20,100 @@ Personalize: troque as URLs de redes sociais, adicione links de pré-save.
       --radius: 18px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;}
+    html,body{height:100%}
     body{
-      margin:0;font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient( circle at 10% 10%, rgba(255,92,217,0.06), transparent 5%),
-                 radial-gradient( circle at 90% 90%, rgba(255,255,255,0.02), transparent 10%),
+      margin:0;
+      font-family: 'Orbitron', ui-sans-serif;
+      background: radial-gradient(circle at 10% 10%, rgba(255,92,217,0.06), transparent 5%),
+                 radial-gradient(circle at 90% 90%, rgba(255,255,255,0.02), transparent 10%),
                  linear-gradient(180deg,#050405 0%, #0b0710 60%);
-      color:var(--white); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      color:var(--white);
       overflow-x:hidden;
     }
 
-    /* Neon headline */
-    .hero{
-      min-height:100vh; display:flex; align-items:center; justify-content:center; padding:48px 20px; position:relative;
-    }
-    .card{width:100%; max-width:1100px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:22px; padding:36px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.03); backdrop-filter: blur(6px);}
+    /* HERO */
+    .hero{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:48px 20px; position:relative;}
+    .card{width:100%; max-width:1100px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:22px; padding:36px; box-shadow:0 10px 40px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.03); backdrop-filter:blur(6px)}
 
-    .top{
-      display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap;
-    }
+    .top{display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap}
     .brand{display:flex; gap:18px; align-items:center}
-    .logo{
-      width:86px; height:86px; border-radius:14px; background:linear-gradient(135deg,var(--black), rgba(255,92,217,0.08)); border:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
-    }
-    .logo h3{margin:0; font-size:18px; letter-spacing:1px}
+    .logo{width:86px; height:86px; border-radius:14px; background:linear-gradient(135deg,var(--black), rgba(255,92,217,0.08)); border:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center}
+    .logo h3{margin:0; font-size:18px; letter-spacing:1px; text-align:center}
 
     .title-wrap{flex:1}
-    .title{
-      font-size:48px; margin:0; line-height:0.95; font-weight:800; letter-spacing:2px; color:var(--white); text-transform:uppercase;
-      position:relative;
-    }
-    /* glitch effect */
-    .title.glitch{color:var(--white)}
+    .title{font-size:48px; margin:0; font-weight:800; letter-spacing:3px; text-transform:uppercase; position:relative}
+
+    /* glitch */
     .title.glitch::before, .title.glitch::after{
-      content:attr(data-text); position:absolute; left:0; top:0; width:100%;
-      clip-path:var(--clip, inset(0 0 0 0));
-      animation:glitch 2.5s infinite linear alternate-reverse;
-      opacity:0.85;
+      content:attr(data-text);
+      position:absolute; inset:0; opacity:0.8;
+      animation:glitch 2.3s infinite linear alternate-reverse;
     }
-    .title.glitch::before{color:var(--pink); transform:translate(-2px,-1px); mix-blend-mode:screen;}
-    .title.glitch::after{color:var(--white); transform:translate(2px,1px); mix-blend-mode:overlay;}
-
+    .title.glitch::before{color:var(--pink); transform:translate(-2px,-2px)}
+    .title.glitch::after{color:var(--white); transform:translate(2px,2px)}
     @keyframes glitch{
-      0%{transform:translate(0,0)}
-      20%{transform:translate(-2px,1px)}
-      40%{transform:translate(2px,-2px)}
-      60%{transform:translate(-1px,2px)}
-      80%{transform:translate(1px,-1px)}
-      100%{transform:translate(0,0)}
+      0%{clip-path:inset(0 0 80% 0)}
+      20%{clip-path:inset(10% 0 60% 0)}
+      40%{clip-path:inset(40% 0 20% 0)}
+      60%{clip-path:inset(80% 0 0 0)}
+      80%{clip-path:inset(30% 0 40% 0)}
+      100%{clip-path:inset(0 0 80% 0)}
     }
 
-    .slogan{margin-top:6px; color:var(--muted); font-weight:600}
+    .slogan{margin-top:4px; color:var(--muted); font-weight:600}
 
-    /* cover + controls */
-    .media{
-      display:flex; gap:20px; align-items:center; margin-top:26px; flex-wrap:wrap;
-    }
-    .cover{
-      width:220px; height:220px; border-radius:16px; background:linear-gradient(135deg,var(--pink), rgba(0,0,0,0.45)); display:flex; align-items:center; justify-content:center; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.6);
-      overflow:hidden; border:1px solid rgba(255,255,255,0.06);
-    }
-    .cover .poke{
-      position:absolute; inset:0; background-image: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02), transparent 5%); mix-blend-mode:overlay;}
-    .cover h2{font-size:28px;margin:0; transform:rotate(-6deg); text-shadow: 0 6px 30px rgba(255,92,217,0.2);}
+    /* MEDIA */
+    .media{display:flex; gap:20px; align-items:center; margin-top:26px; flex-wrap:wrap}
+    .cover{width:230px; height:230px; border-radius:16px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.06)}
+    .cover img{width:100%; height:100%; object-fit:cover}
 
-    .controls{flex:1; min-width:240px}
-    .btn{display:inline-flex; align-items:center; gap:12px; cursor:pointer; user-select:none; border-radius:12px; padding:12px 18px; font-weight:700; text-transform:uppercase; letter-spacing:1px; border:1px solid rgba(255,255,255,0.06); background:var(--glass);}
-    .btn.primary{background:linear-gradient(90deg,var(--pink), rgba(255,92,217,0.18)); color:var(--black);}
-    .btn.ghost{background:transparent; color:var(--white);}
+    .controls{flex:1; min-width:260px}
+    .btn{padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,0.07); cursor:pointer; text-transform:uppercase; font-weight:700; letter-spacing:1px; background:var(--glass); color:var(--white); display:inline-flex; gap:10px}
+    .primary{background:linear-gradient(90deg,var(--pink), rgba(255,92,217,0.18)); color:var(--black)}
+    .ghost{background:transparent}
 
-    .tracklist-section{margin-top:36px; display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap}
-    .tracks{flex:1; min-width:320px; background:var(--card); padding:18px;border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
-    .tracks h3{margin:0 0 12px 0}
-    .track{display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-radius:10px; margin-bottom:8px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
-    .track .title{font-weight:700}
-    .track .time{color:var(--muted); font-size:13px}
+    /* TRACKLIST */
+    .tracklist-section{margin-top:36px; display:flex; gap:20px; flex-wrap:wrap}
+    .tracks{flex:1; min-width:320px; background:var(--card); padding:18px; border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
+    .coming{font-size:22px; text-transform:uppercase; color:var(--pink); font-weight:800}
 
-    .coming{font-size:20px; text-transform:uppercase; color:var(--pink); font-weight:800; letter-spacing:1px}
+    /* META */
+    .meta{width:260px; min-width:220px; background:var(--card); padding:18px; border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
+    .meta h4{margin:0 0 6px 0}
 
-    .meta{width:260px; min-width:220px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
-    .meta p{margin:8px 0}
-
-    footer{margin-top:28px; color:rgba(255,255,255,0.4); font-size:13px; text-align:center}
-
-    /* animated background elements */
-    .bg-bubble{position:absolute; border-radius:999px; filter:blur(40px); opacity:0.12; pointer-events:none}
-    .bubble1{width:340px;height:340px; background:linear-gradient(180deg, rgba(255,92,217,0.8), rgba(255,255,255,0.02)); top:-60px; left:-80px; animation:float 8s ease-in-out infinite}
-    .bubble2{width:240px;height:240px; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,92,217,0.2)); bottom:-80px; right:-40px; animation:float2 9s ease-in-out infinite}
-
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(18px)}100%{transform:translateY(0)}}
-    @keyframes float2{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-26px) rotate(6deg)}100%{transform:translateY(0) rotate(0)}}
-
-    /* modal */
-    .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.6); z-index:60}
-    .modal.active{display:flex}
-    .modal-card{width:100%; max-width:520px; background:linear-gradient(180deg,#071018, #0d0810); border-radius:14px; padding:22px; border:1px solid rgba(255,255,255,0.04)}
-    .form-row{display:flex; gap:12px; margin-top:12px}
-    input[type=text], input[type=email]{flex:1; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.05); background:transparent; color:var(--white)}
-
-    /* responsive */
-    @media (max-width:760px){
-      .title{font-size:36px}
-      .cover{width:180px;height:180px}
-    }
+    footer{margin-top:30px; text-align:center; color:rgba(255,255,255,0.4); font-size:12px}
   </style>
 </head>
 <body>
   <div class="hero">
-    <div class="bg-bubble bubble1"></div>
-    <div class="bg-bubble bubble2"></div>
-
     <div class="card">
+
       <div class="top">
         <div class="brand">
-          <div class="logo"><h3>90<br> PRA<br> TRÊS</h3></div>
+          <div class="logo"><h3>90<br>PRA<br>TRÊS</h3></div>
           <div class="title-wrap">
             <h1 class="title glitch" data-text="PARTY">PARTY</h1>
-            <div class="slogan">Primeira mixtape — estilo Opium &amp; neon</div>
+            <div class="slogan">Primeira mixtape — estética Opium & neon</div>
           </div>
         </div>
-        <div style="display:flex; gap:12px; align-items:center;">
-          <button class="btn ghost" onclick="openSocial()">Redes</button>
+        <div style="display:flex; gap:12px">
+          <button class="btn ghost" onclick="window.open('https://www.instagram.com/90_pratres_ofc/?utm_source=ig_web_button_share_sheet','_blank')">Instagram</button>
           <button class="btn primary" id="presaveBtn">Pré-save</button>
         </div>
       </div>
 
       <div class="media">
         <div class="cover">
-  <img src="/mnt/data/3a8d90a0-91dd-4c52-812e-23a683565e94.png" alt="Capa PARTY" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
-</div>
-          <h2>PARTY</h2>
+          <img src="/mnt/data/3a8d90a0-91dd-4c52-812e-23a683565e94.png" alt="Capa PARTY">
         </div>
-
         <div class="controls">
-          <div style="display:flex; gap:12px; align-items:center;">
-            <button class="btn primary" onclick="playPreview()">▶ Ouvir Preview</button>
-            <button class="btn ghost" onclick="downloadEP()">Baixar press kit</button>
-          </div>
+          <button class="btn primary" onclick="playPreview()">▶ Preview</button>
+          <button class="btn ghost" onclick="alert('Press Kit em breve')">Press Kit</button>
 
-          <div style="margin-top:18px; color:var(--muted)">Preview: faixa de 30 seg — disponível em breve</div>
-
-          <div style="margin-top:14px; display:flex; gap:10px; align-items:center">
-            <div style="font-size:13px; color:var(--muted)">Lançamento:</div>
-            <div class="coming">EM BREVE</div>
+          <div style="margin-top:14px; color:var(--muted)">Preview disponível em breve</div>
+          <div style="margin-top:10px; display:flex; gap:8px; align-items:center">
+            <span style="font-size:13px; color:var(--muted)">Lançamento:</span>
+            <span class="coming">EM BREVE</span>
           </div>
         </div>
       </div>
@@ -178,100 +121,21 @@ Personalize: troque as URLs de redes sociais, adicione links de pré-save.
       <div class="tracklist-section">
         <div class="tracks">
           <h3>Tracklist</h3>
-
-          <!-- quando as faixas existirem, substituir as linhas abaixo com <div class="track">... -->
-          <div style="display:flex; align-items:center; gap:12px; padding:18px; border-radius:12px; background:linear-gradient(90deg, rgba(255,255,255,0.01), transparent);">
-            <div style="flex:1">
-              <div style="font-weight:800">EM BREVE</div>
-              <div style="color:var(--muted); font-size:13px">Tracklist completa será divulgada em breve</div>
-            </div>
-            <div style="width:80px; text-align:right; color:var(--muted)">—</div>
-          </div>
-
+          <div style="padding:20px; background:rgba(255,255,255,0.03); border-radius:12px; font-weight:800; text-align:center">EM BREVE</div>
         </div>
 
         <div class="meta">
-  <h4 style="margin:0">Artistas</h4>
-  <p>Zezão • Rafael</p>
+          <h4>Artistas</h4>
+          <p>Zezão • Rafael • Gabzhtz</p>
 
-  <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
-    <a href="https://www.instagram.com/90_pratres_ofc/?utm_source=ig_web_button_share_sheet" target="_blank" class="btn ghost">Instagram</a>
-    <a href="#" class="btn ghost">X</a>
-  </div>
-</div>
+          <h4 style="margin-top:12px">Produtores</h4>
+          <p>Makita (produtor & compositor)<br>João (produtor)</p>
+
+          <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap">
+            <a class="btn ghost" href="https://www.instagram.com/90_pratres_ofc/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
+            <a class="btn ghost" href="#">X</a>
+          </div>
         </div>
       </div>
 
-      <footer>
-        © 90 PRA TRÊS — PARTY • Todos os direitos reservados.
-      </footer>
-    </div>
-  </div>
-
-  <!-- modal pré-save -->
-  <div id="modal" class="modal" role="dialog" aria-hidden="true">
-    <div class="modal-card">
-      <h3>Pré-save &amp; notificação</h3>
-      <p>Deixe seu e-mail e te avisamos quando a mixtape for lançada.</p>
-      <div class="form-row">
-        <input id="name" type="text" placeholder="Seu nome" />
-        <input id="email" type="email" placeholder="seu@exemplo.com" />
-      </div>
-      <div style="display:flex; gap:8px; margin-top:14px; justify-content:flex-end">
-        <button class="btn ghost" onclick="closeModal()">Cancelar</button>
-        <button class="btn primary" onclick="submitPreSave()">Enviar</button>
-      </div>
-    </div>
-  </div>
-
-  <audio id="previewAudio" preload="none">
-    <!-- Se quiser, adicione um arquivo em assets/preview.mp3 e remova o comentário abaixo -->
-    <!-- <source src="assets/preview.mp3" type="audio/mpeg"> -->
-    Seu navegador não suporta áudio.
-  </audio>
-
-  <script>
-    const modal = document.getElementById('modal');
-    const presaveBtn = document.getElementById('presaveBtn');
-
-    presaveBtn.addEventListener('click', ()=>{ openModal(); });
-    function openModal(){ modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); }
-    function closeModal(){ modal.classList.remove('active'); modal.setAttribute('aria-hidden','true'); }
-
-    function submitPreSave(){
-      const name = document.getElementById('name').value || '—';
-      const email = document.getElementById('email').value || '';
-      if(!email || !email.includes('@')){ alert('Coloque um e-mail válido.'); return; }
-
-      // Simulação: armazene localmente (para produção, envie para um backend ou serviço de mail)
-      const list = JSON.parse(localStorage.getItem('presave_list')||'[]');
-      list.push({name, email, date: new Date().toISOString()});
-      localStorage.setItem('presave_list', JSON.stringify(list));
-
-      alert('Obrigado! Você será avisado quando a mixtape sair.');
-      closeModal();
-    }
-
-    function playPreview(){
-      const audio = document.getElementById('previewAudio');
-      // Se existir source => play, se não => mensagem
-      if(audio.querySelector('source')){
-        audio.play();
-      } else {
-        alert('Preview ainda não disponível — será adicionado em breve.');
-      }
-    }
-
-    function downloadEP(){
-      alert('Press kit disponível em breve.');
-    }
-
-    function openSocial(){
-      alert('Links para redes sociais serão adicionados.');
-    }
-
-    // keyboard close modal
-    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
-  </script>
-</body>
-</html>
+      <footer>© 90 PRA TRÊS
